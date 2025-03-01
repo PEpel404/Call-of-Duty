@@ -1,0 +1,39 @@
+from tkinter import*
+
+window = Tk()                                        #Создание окна(основы)
+window.title("Call of Duty")                    #Заголовок окна
+window.iconbitmap(default="Call of Duty 4 Modern Warfare Remastered.ico")       #Иконка   
+window.geometry("500x600")              #Размеры окна
+
+def exit_click():
+    window.destroy()
+
+
+window.option_add("*tearOff", FALSE)
+
+Main_menu = Menu()
+
+game_menu = Menu()
+game_menu.add_command(label="Новая игра")
+game_menu.add_command(label="Сохранить")
+game_menu.add_command(label="Загрузить")
+game_menu.add_separator()
+game_menu.add_command(label="Выход", command=exit_click)
+
+weapon_menu = Menu()
+weapon_menu.add_command(label="Арсенал")
+weapon_menu.add_command(label="Оружейная")
+
+gr_menu = Menu()
+gr_menu.add_command(label="Уровень")
+gr_menu.add_command(label="Снаряжение")
+
+
+Main_menu.add_cascade(label="Игра", menu=game_menu)
+Main_menu.add_cascade(label="Арсенал", menu=weapon_menu)
+Main_menu.add_cascade(label="Экипировка", menu=gr_menu)
+
+
+window.config(menu=Main_menu)
+window.mainloop()
+
