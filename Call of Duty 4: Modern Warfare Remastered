@@ -8,6 +8,16 @@ window.geometry("500x600")              #Размеры окна
 def exit_click():
     window.destroy()
 
+def clear_window():
+    for widget in window. winfo_children():
+        if not isinstance(widget,tk.Menu):     #НЕ УДАЛЯЕМ МЕНЮ
+            widget.detroy()
+
+def gear_click():
+    clear_window()
+
+
+
 
 window.option_add("*tearOff", FALSE)
 
@@ -26,7 +36,7 @@ weapon_menu.add_command(label="Оружейная")
 
 gr_menu = Menu()
 gr_menu.add_command(label="Уровень")
-gr_menu.add_command(label="Снаряжение")
+gr_menu.add_command(label="Снаряжение", command=gear_click )
 
 
 Main_menu.add_cascade(label="Игра", menu=game_menu)
@@ -36,4 +46,3 @@ Main_menu.add_cascade(label="Экипировка", menu=gr_menu)
 
 window.config(menu=Main_menu)
 window.mainloop()
-
